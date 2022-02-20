@@ -1,128 +1,78 @@
-import React,{useState,useRef,useEffect,useMemo} from 'react'
+import React,{useState,useEffect,useRef} from 'react'
 import './css/style.css'
-// import temat from './funkcje/Szukanie'
-import checkTopic from './funkcje/Szukanie'
+import filter from './funkcje/Filter'
+import axios from 'axios'
+/* xXxRef.current.c - sluzy do tego zeby dac znak dla programu zeby zapisal informacje do tablicy z danymi ,
+jezeli jest false to ma tego nie robic , gdy c=sie jakis string to przewaznie opisuje co specjalnego wtedy ma zrobic(glownie gdzie zapisac wyslna wiadomosc prze
+  uzytkownika*/
+
 function App() {
-  const renderRef=useRef(null)
-  const licznikRef=useRef(null)
- const btnRef=useRef(null)
-const [user,setUser]=useState("siema")
+  const [user,setUser]=useState({txt:"siema",b:"",important:false})
+  const [klik,setKlik]=useState(false)
+  const [data,setData]=useState("")
+  const [dialog,setDialog]=useState([])
+  const blockFirstRenderRef=useRef(0)
+  const xXxRef=useRef(0)
 
-const [klik,setKlik]=useState(true)
-
-const [ogolnaRozmowa,setOgolnaRozmowa]=useState([""])
-
-useEffect(()=>{
-  setTimeout(()=>{
-    setUser("S")
-
-    },300)
-    setTimeout(()=>{
-      setUser((p)=>p+="i")
-      },500)
-      setTimeout(()=>{
-        setUser((p)=>p+="e")
-        },700)
-        setTimeout(()=>{
-          setUser((p)=>p+="m")
-          },900)
-          setTimeout(()=>{
-            setUser((p)=>p+="a")
-            },1100)
-            setTimeout(()=>{
-              btnRef.current.style.backgroundColor="darkorange"
-              btnRef.current.style.border="3px solid yellow"
-              },1300)
-              setTimeout(()=>{
-                btnRef.current.style.backgroundColor=""
-                btnRef.current.style.border=""
-                },1500)
-                setTimeout(()=>{
-                  btnRef.current.style.backgroundColor="darkorange"
-                  btnRef.current.style.border="3px solid yellow"
-                  },1700)
-                  setTimeout(()=>{
-                    btnRef.current.style.backgroundColor=""
-                    btnRef.current.style.border=""
-                    },1900)
-                    setTimeout(()=>{
-                      btnRef.current.style.backgroundColor="darkorange"
-                      btnRef.current.style.border="3px solid yellow"
-                      },2100)
-                      setTimeout(()=>{
-                        btnRef.current.style.backgroundColor=""
-                        btnRef.current.style.border=""
-                        },2300)
-                        setTimeout(()=>{
-                          btnRef.current.style.backgroundColor="darkorange"
-                          btnRef.current.style.border="3px solid yellow"
-                          },2600)
-                          setTimeout(()=>{
-                            btnRef.current.style.backgroundColor=""
-                            btnRef.current.style.border=""
-                            },2900)
-},[])
-
-function counter(){
-   let licznik=0
-   function inner(){
-     console.log(licznik)
-     return licznik+=1
-   }
-   return inner
-}
-let count=counter()
 
 
 
 useEffect(()=>{
-
- 
-  if(renderRef.current>0){
-
- 
-  let ktos=checkTopic(user)
-
-console.log(ktos)
-
- setTimeout(()=>{
-  
-  setOgolnaRozmowa([...ogolnaRozmowa,{who:ktos.a,flag:"R"},{who:ktos.b!==1?ktos.b:null,flag:"R"}])
-  
- },700)
+  if(blockFirstRenderRef.current>0){
+    xXxRef.current=filter(user)
+  }
+},[klik])
+useEffect(()=>{
+if(blockFirstRenderRef.current>0){
+  setDialog([...dialog,{text:user.txt,flag:"U"}])
+setTimeout(()=>{
+  xXxRef.current.b!==1?setDialog([...dialog,{text:user.txt,b:"",flag:"U",name:xXxRef.current.name},{text:xXxRef.current.a,b:"",flag:"R",asterisk:xXxRef.current.asterisk,name:xXxRef.current.name},{text:xXxRef.current.b,flag:"R",asterisk:xXxRef.current.asterisk,name:xXxRef.current.name}])
+  :setDialog([...dialog,{text:user.txt,b:"",flag:"U"},{text:xXxRef.current.a,flag:"R",asterisk:xXxRef.current.asterisk,name:xXxRef.current.name}])
+},500)
 }
+
+
 },[klik])
 
-/*lets talk*/
 
-const letsTalk=(e)=>{
-  renderRef.current+=1
-setOgolnaRozmowa([...ogolnaRozmowa,{who:user,flag:"U"}])
-setKlik(!klik)
+const sendMessage=()=>{
+  
 
+  blockFirstRenderRef.current+=1
+  setKlik(!klik)
+if(xXxRef.current===0){
+  setUser({txt:user.txt,b:""})
+  return
 
 }
 
+  else if(xXxRef.current.c==="podajImie"){
+    setUser({txt:user.txt,b:"",important:"podajImie"})
+  }
+  else if(xXxRef.current.c===false){
+    setUser({txt:user.txt,b:"",important:false})
+  }
 
+ 
+  
+}
+console.log(dialog)
   return (
     <div className="container">
-      <div className="talking">
-      <input onClick={()=>setUser("")} className="inputTalk" type="text" value={user} onChange={(e)=>setUser(e.target.value)}></input>
-      <button ref={btnRef} onClick={()=>letsTalk()} className="btnSend">send</button>
-      <div className="speak">
-    
-{ogolnaRozmowa.map((el,index)=>{
-  console.log(el)
+      <div className="dialog">
+        <input type="text" value={user.txt} 
+        onChange={(e)=>setUser({...user,txt:e.target.value})} ></input>
+        <button onClick={()=>sendMessage()}>Send</button>
+        <div className="displayConversation">
+{dialog.map((el,i)=>{
   return(
-    
-   <li key={index} className={el.flag==="U"?"a":"b"} >{el.who}</li>
-  
+    <ul>
+      <li className={el.flag==="U"?"userMessage":"robotMessage"}  key={i}>{el.text} {el.name!==0?<h2 className="underlineText">{el.name}</h2>:null}</li>
+    </ul>
   )
 })}
-       
+        </div>
       </div>
-      </div>
-      
     </div>
   )
 }
