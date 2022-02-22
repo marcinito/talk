@@ -1,37 +1,646 @@
+@import '_variable.scss' ;
 *{
     margin:0;
     padding:0;
     box-sizing: border-box;
 }
+@include mq(first){
+body{
+    background-color: #DBDBDB;
+}
+
 .container{
-    border:10px solid darkcyan;
+
     width:100vw;
     height:100vh;
+    background-color: #DBDBDB;
 }
+.nav{
+    width:100%;
+    height:fit-content;
+    background-color: darkblue;
+    font-family: 'Architects Daughter';
+   box-shadow: 0px 1px 5px 5px  lighten(black,20%);
+    color:red;
+    display:flex;
+
+    justify-content: space-between;
+    
+}
+
+.logo{
+    width:30%;
+    font-size:2rem;
+    position: relative;
+ left:5%;
+    letter-spacing: 2px;
+}
+.asterisk{
+    
+  align-self: center;
+    width:30%;
+    height:100%;
+   
+
+display:flex;
+flex-direction: column;
+}
+.blok{
+ 
+    width:10%;
+    align-self: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+    left:20%;
+    font-size: 2rem;
+    animation-name:bblok;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+}
+@keyframes bblok{
+0%{transform:rotate(0deg)}
+    100%{transform:rotate(360deg)}
+}
+
+
 .dialog{
-    width:60%;
-    height:60%;
-    border:5px solid brown;
+    width:100%;
+    height:80%;
+   
     position:relative;
     left:50%;
-    top:50%;
-    transform:translate(-50%,-50%)
+    top:42%;
+    transform:translate(-50%,-50%);
+    flex-direction: column;
+    display:flex;
 }
 .displayConversation{
-    width:60%;
+    width: 90%;
+    margin:3% auto 0%;
     height:70%;
     overflow-y:scroll;
-    border:1px solid black;
+    box-shadow:0px 1px 2px 2px gray;
+  
+    background-color: darken(white,5%);
 }
 .userMessage{
     border:1px double black;
     background-color: darken(skyblue, 10%);
+    font-size:1.5rem;
+    color:darkgreen;
 }
 .robotMessage{
     border:1px double black;
     background-color: lighten(crimson, 40%);
+    font-size:1.5rem;
+    color:lighten(black,10%)
 }
 .underlineText{
     color:darkorange;
     -webkit-text-stroke:1px red;
+    font-weight:bold;
+
+    
+}
+.welcomeText{
+    border:1px solid black;
+    background-color: darken(white,5%);
+    box-shadow:1px 2px 5px 5px gray;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    font-family:'Maven Pro';
+    text-align: center;
+}
+.interFace{
+    display:flex;
+    justify-content: center;
+    width:90%;
+    height:15%;
+    margin:0 auto;
+    box-shadow: 1px 1px 3px 3px gray;
+    background-color: lighten($color: skyblue, $amount: 20%);
+    
+}
+.inputEnter{
+    margin:0 auto;
+    background-color: lighten($color: skyblue, $amount: 20%);
+    width:70%;
+    height:100%;
+    text-align: center;
+  font-size:1.5rem;
+    border: none;
+    outline: none;
+    color:darken(silver,20%);
+   -webkit-text-stroke:.4px darkorange;
+   font-weight:bolder;
+    
+}
+.btnSend{
+    width:30%;
+    border:none;
+    outline:none;
+    background-color: #BDBDBD;
+    font-size:1.3rem;
+    font-family:'Architects Daughter';
+    font-weight:bold;
+    -webkit-text-stroke:1px darken(silver,20%);
+    border-left:3px dotted lighten(black,20%);
+    border-top-left-radius: 50%;
+}
+}
+@include mq(second){
+    *{
+        margin:0;
+        padding:0;
+        box-sizing: border-box;
+    }
+    body{
+        background-color: darken(white,1%);
+        display: flex;
+        justify-content: center;
+        max-height:100vh;
+       
+    }
+    
+    .container{
+    
+        width:90vw;
+       min-height: 100%;
+        background-color: #DBDBDB;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+     
+        
+    }
+    .nav{
+        width:97.5%;
+        height:fit-content;
+        background-color: darkblue;
+        font-family: 'Architects Daughter';
+       box-shadow: 0px 1px 5px 5px  lighten(black,20%);
+        color:red;
+        display:flex;
+    align-items: center;
+    justify-content: center;
+        justify-content: space-between;
+        box-sizing: border-box;
+        
+    }
+    
+    .logo{
+        width:30%;
+        font-size:2.5rem;
+        position: relative;
+     left:5%;
+        letter-spacing: 2px;
+    }
+    .asterisk{
+        
+      align-self: center;
+        width:30%;
+        height:100%;
+       
+    color:orange;
+    display:flex;
+    flex-direction: column;
+    }
+    .blok{
+     
+        width:10%;
+        align-self: center;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height:100%;
+        left:20%;
+        font-size: 2.5rem;
+        animation-name:bblok;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+        animation-fill-mode: both;
+        animation-timing-function: linear;
+    }
+    @keyframes bblok{
+    0%{transform:rotate(0deg)}
+        100%{transform:rotate(360deg)}
+    }
+    
+    
+    .dialog{
+      
+    }
+    .displayConversation{
+        width: 90%;
+        margin:3% auto 0%;
+        height:70%;
+        overflow-y:scroll;
+        box-shadow:0px 1px 2px 2px gray;
+      
+        background-color: darken(white,5%);
+    }
+    .userMessage{
+        border:1px double black;
+        background-color: darken(skyblue, 10%);
+        font-size:1.5rem;
+        color:darkgreen;
+    }
+    .robotMessage{
+        border:1px double black;
+        background-color: lighten(crimson, 40%);
+        font-size:1.5rem;
+        color:lighten(black,10%)
+    }
+    .underlineText{
+        color:darkorange;
+        -webkit-text-stroke:1px red;
+        font-weight:bold;
+    
+        
+    }
+    .welcomeText{
+        border:1px solid black;
+        background-color: darken(white,5%);
+        box-shadow:1px 2px 5px 5px gray;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        font-family:'Maven Pro';
+        text-align: center;
+    }
+    .interFace{
+        display:flex;
+        justify-content: center;
+        width:90%;
+        height:15%;
+        margin:0 auto;
+        box-shadow: 1px 1px 3px 3px gray;
+        background-color: lighten($color: skyblue, $amount: 20%);
+        
+    }
+    .inputEnter{
+        margin:0 auto;
+        background-color: lighten($color: skyblue, $amount: 20%);
+        width:70%;
+        height:100%;
+        text-align: center;
+      font-size:1.5rem;
+        border: none;
+        outline: none;
+        color:darken(silver,20%);
+       -webkit-text-stroke:.4px darkorange;
+       font-weight:bolder;
+        
+    }
+    .btnSend{
+        width:30%;
+        border:none;
+        outline:none;
+        background-color: #BDBDBD;
+        font-size:1.3rem;
+        font-family:'Architects Daughter';
+        font-weight:bold;
+        -webkit-text-stroke:1px darken(silver,20%);
+        border-left:3px dotted lighten(black,20%);
+        border-top-left-radius: 50%;
+    }
+}
+/*THIRD*/
+@include mq(third){
+    *{
+        margin:0;
+        padding:0;
+        box-sizing: border-box;
+    }
+    body{
+        background-color: darken(white,1%);
+        display: flex;
+        justify-content: center;
+        max-height:100vh;
+       
+    }
+    
+    .container{
+    
+        width:80vw;
+       min-height: 100%;
+        background-color: #DBDBDB;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+     
+        
+    }
+    .nav{
+        width:98.7%;
+        height:fit-content;
+      
+        background-color: darkblue;
+        font-family: 'Architects Daughter';
+       box-shadow: 0px 1px 5px 5px  lighten(black,20%);
+        color:red;
+        display:flex;
+    align-items: center;
+    justify-content: center;
+        justify-content: space-between;
+        box-sizing: border-box;
+        
+    }
+    
+    .logo{
+        width:30%;
+        font-size:3.5rem;
+        position: relative;
+     left:5%;
+        letter-spacing: 2px;
+    }
+    .asterisk{
+        
+      align-self: center;
+        width:30%;
+        height:100%;
+       
+    
+    display:flex;
+    flex-direction: column;
+    }
+    .blok{
+     
+        width:10%;
+        align-self: center;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height:100%;
+        left:20%;
+        font-size: 3.5rem;
+        animation-name:bblok;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+        animation-fill-mode: both;
+        animation-timing-function: linear;
+        color:orange;
+    }
+    @keyframes bblok{
+    0%{transform:rotate(0deg)}
+        100%{transform:rotate(360deg)}
+    }
+    
+    
+    .dialog{
+      
+    }
+    .displayConversation{
+        width: 70%;
+        margin:3% auto 0%;
+        height:70%;
+        max-height:500px;
+        overflow-y:scroll;
+        box-shadow:0px 1px 2px 2px gray;
+      
+        background-color: darken(white,5%);
+    }
+    .userMessage{
+        border:1px double black;
+        background-color: darken(skyblue, 10%);
+        font-size:1.5rem;
+        color:darkgreen;
+    }
+    .robotMessage{
+        border:1px double black;
+        background-color: lighten(crimson, 40%);
+        font-size:1.5rem;
+        color:lighten(black,10%)
+    }
+    .underlineText{
+        color:darkorange;
+        -webkit-text-stroke:1px red;
+        font-weight:bold;
+    
+        
+    }
+    .welcomeText{
+        border:1px solid black;
+        background-color: darken(white,5%);
+        box-shadow:1px 2px 5px 5px gray;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        font-family:'Maven Pro';
+        text-align: center;
+        width:90%;
+    }
+    .interFace{
+        display:flex;
+        justify-content: center;
+        width:70%;
+        height:12%;
+        max-height:70px;
+        margin:0 auto;
+        box-shadow: 1px 1px 3px 3px gray;
+        background-color: lighten($color: skyblue, $amount: 20%);
+        
+    }
+    .inputEnter{
+        margin:0 auto;
+        background-color: lighten($color: skyblue, $amount: 20%);
+        width:70%;
+        height:100%;
+        text-align: center;
+      font-size:1.5rem;
+        border: none;
+        outline: none;
+        color:darken(silver,20%);
+       -webkit-text-stroke:.4px darkorange;
+       font-weight:bolder;
+      
+        
+    }
+    .btnSend{
+        width:30%;
+        border:none;
+        outline:none;
+        background-color: #BDBDBD;
+        font-size:1.3rem;
+        font-family:'Architects Daughter';
+        font-weight:bold;
+        -webkit-text-stroke:1px darken(silver,20%);
+        border-left:3px dotted lighten(black,20%);
+        border-top-left-radius: 50%;
+    }
+}
+/*FOUR*/
+@include mq(four){
+    *{
+        margin:0;
+        padding:0;
+        box-sizing: border-box;
+    }
+    body{
+        background-color: darken(white,1%);
+        display: flex;
+        justify-content: center;
+        max-height:100vh;
+       
+    }
+    
+    .container{
+    
+        width:70vw;
+       min-height: 100%;
+        background-color: #DBDBDB;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+     
+        
+    }
+    .nav{
+        width:98.7%;
+        height:fit-content;
+      
+        background-color: darkblue;
+        font-family: 'Architects Daughter';
+       box-shadow: 0px 1px 5px 5px  lighten(black,20%);
+        color:red;
+        display:flex;
+    align-items: center;
+    justify-content: center;
+        justify-content: space-between;
+        box-sizing: border-box;
+        
+    }
+    
+    .logo{
+        width:30%;
+        font-size:3.5rem;
+        position: relative;
+     left:5%;
+        letter-spacing: 2px;
+    }
+    .asterisk{
+        
+      align-self: center;
+        width:30%;
+        height:100%;
+       
+    
+    display:flex;
+    flex-direction: column;
+    }
+    .blok{
+     
+        width:10%;
+        align-self: center;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height:100%;
+        left:20%;
+        font-size: 3.5rem;
+        animation-name:bblok;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+        animation-fill-mode: both;
+        animation-timing-function: linear;
+        color:orange;
+    }
+    @keyframes bblok{
+    0%{transform:rotate(0deg)}
+        100%{transform:rotate(360deg)}
+    }
+    
+    
+    .dialog{
+      
+    }
+    .displayConversation{
+        width: 70%;
+        margin:3% auto 0%;
+        height:70%;
+        max-height:500px;
+        overflow-y:scroll;
+        box-shadow:0px 1px 2px 2px gray;
+      
+        background-color: darken(white,5%);
+    }
+    .userMessage{
+        border:1px double black;
+        background-color: darken(skyblue, 10%);
+        font-size:1.5rem;
+        color:darkgreen;
+    }
+    .robotMessage{
+        border:1px double black;
+        background-color: lighten(crimson, 40%);
+        font-size:1.5rem;
+        color:lighten(black,10%)
+    }
+    .underlineText{
+        color:darkorange;
+        -webkit-text-stroke:1px red;
+        font-weight:bold;
+    
+        
+    }
+    .welcomeText{
+        border:1px solid black;
+        background-color: darken(white,5%);
+        box-shadow:1px 2px 5px 5px gray;
+        display:flex;
+        width:90%;
+        flex-direction: column;
+        align-items: center;
+        font-family:'Maven Pro';
+        text-align: center;
+    }
+    .interFace{
+        display:flex;
+        justify-content: center;
+        width:70%;
+        height:12%;
+        max-height:70px;
+        margin:0 auto;
+        box-shadow: 1px 1px 3px 3px gray;
+        background-color: lighten($color: skyblue, $amount: 20%);
+        
+    }
+    .inputEnter{
+        margin:0 auto;
+        background-color: lighten($color: skyblue, $amount: 20%);
+        width:70%;
+        height:100%;
+        text-align: center;
+      font-size:1.5rem;
+        border: none;
+        outline: none;
+        color:darken(silver,20%);
+       -webkit-text-stroke:.4px darkorange;
+       font-weight:bolder;
+      
+        
+    }
+    .btnSend{
+        width:30%;
+        border:none;
+        outline:none;
+        background-color: #BDBDBD;
+        font-size:1.3rem;
+        font-family:'Architects Daughter';
+        font-weight:bold;
+        -webkit-text-stroke:1px darken(silver,20%);
+        border-left:3px dotted lighten(black,20%);
+        border-top-left-radius: 50%;
+    }
+  
+  
 }
