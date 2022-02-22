@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/talk/static/css/main.11f9ed77.css",
+    "main.js": "/talk/static/js/main.14e7319d.js",
+    "index.html": "/talk/index.html",
+    "main.11f9ed77.css.map": "/talk/static/css/main.11f9ed77.css.map",
+    "main.14e7319d.js.map": "/talk/static/js/main.14e7319d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.11f9ed77.css",
+    "static/js/main.14e7319d.js"
+  ]
+}
